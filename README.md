@@ -1,0 +1,2 @@
+# gobenchmarktest
+go benchmark test
