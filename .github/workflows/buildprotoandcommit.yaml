@@ -16,6 +16,16 @@ jobs:
       - name: add file
         run: touch "$(date "+%Y-%m-%d %H:%M:%S").txt"
 
+      - name: get change file list
+        uses: tj-actions/changed-files@v34.0.5
+        id: changed-files
+
+      - name: List all changed files
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed"
+          done
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Auto committed by actions
